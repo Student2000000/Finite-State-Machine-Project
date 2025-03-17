@@ -19,12 +19,13 @@ public class RandGen {
 
     /**
      * Generates a random String to be used in the DFA.
-     * @return A random string of a's and b's, anywhere from 0 - 20 in length.
+     * @return A random string of a's, b's, and c's anywhere from 0 - 20 in length.
      */
     public static String genRandInput() {
         int length = forInput();
         char c1 = 'a';
         char c2 = 'b';
+        char c3 = 'c';
         StringBuilder sb = new StringBuilder(length);
         Random rand = new Random();
 
@@ -32,10 +33,16 @@ public class RandGen {
             if (length <= 0){
                 return "";
             } else {
-                sb.append(rand.nextBoolean() ? c1 : c2);
+                int randomChoice = rand.nextInt(3);
+                if (randomChoice == 0) {
+                    sb.append(c1);
+                } else if (randomChoice == 1) {
+                    sb.append(c2);
+                } else {
+                    sb.append(c3);
+                }
             }
         }
-
         return sb.toString();
     }
 }
