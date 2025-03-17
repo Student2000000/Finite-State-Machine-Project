@@ -9,31 +9,40 @@ public class DFAProcessor {
         //This represents q0, the starting place.
         int state = 0;
 
-        for (int i = 0; i < input.length(); i++) {
-            char current = input.charAt(i);
+        //This DFA can't have just the one character from the alphabet.
+        //It's not valid, so I'm ruling it out.
 
-            if (state == 0) {
-                if (current == 'a' || current == 'b') {
-                    state += 1;
-                } else {
-                    return false;
-                }
-            } else if (state == 1) {
-                if (current == 'c') {
-                    state += 1;
-                } else {
-                    return false;
-                }
-            } else if (state > 1) {
-                if (current == 'c') {
-                    //finalResult = true;
-                    state += 1;
-                    return true;
-                }  else if (current != 'c') {
-                    return false;
+        //Outer if rules out empty strings + one char strings.
+        if (input.isEmpty() == false && input.length() > 1) {
+            for (int i = 0; i < input.length(); i++) {
+                char current = input.charAt(i);
+
+                if (state == 0) {
+                    if (current == 'a' || current == 'b') {
+                        state += 1;
+                    } else {
+                        return false;
+                    }
+                } else if (state == 1) {
+                    if (current == 'c') {
+                        state += 1;
+                    } else {
+                        return false;
+                    }
+                } else if (state > 1) {
+                    if (current == 'c') {
+                        //finalResult = true;
+                        state += 1;
+                        return true;
+                    } else if (current != 'c') {
+                        return false;
+                    }
                 }
             }
+        } else {
+            return false;
         }
+
         return true;
     }
 }

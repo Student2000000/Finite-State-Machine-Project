@@ -10,7 +10,7 @@ public class OrganizeOutput {
         String validInputa = "accc";
         String validInputb = "bccc";
         String validInputc = "ac";
-        String invaldInputa = "abcca";
+        String invaldInputa = "abbc";
 
         //gets the result from DFAProcessor for the random
         boolean testout1 = DFAProcessor.acceptDFA(testOutDFARand);
